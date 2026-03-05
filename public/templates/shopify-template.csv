@@ -1,0 +1,2 @@
+order_id,created_at,total_price,subtotal_price,discount_total,shipping_total,tax_total,refunded_total,currency,financial_status,fulfillment_status,customer_id,is_new_customer,utm_source,utm_medium,utm_campaign,landing_site,referring_site
+1001,2026-03-01T12:10:00+03:00,1450.00,1350.00,100.00,0.00,0.00,0.00,TRY,paid,fulfilled,9001,true,facebook,paid_social,Campaign A,https://site.com/?utm_campaign=Campaign%20A,https://l.facebook.com/
