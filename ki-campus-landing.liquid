@@ -1,0 +1,674 @@
+{% comment %}
+  .ki Campus Ambassador Landing Page
+  Add this file to a Shopify page template or section as needed.
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ki-purple: #493d9a;
+    --ki-yellow: #ffe66d;
+    --ki-coral: #ff6b6b;
+    --ki-mint: #95e1d3;
+    --ki-soft-pink: #ff9999;
+    --ki-bg: #fafafa;
+    --ki-text: #2d2d2d;
+    --ki-radius: 18px;
+    --ki-shadow: 0 12px 28px rgba(73, 61, 154, 0.1);
+    --ki-transition: all 0.25s ease;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .ki-campus-page {
+    font-family: "Inter", "Poppins", sans-serif;
+    background: var(--ki-bg);
+    color: var(--ki-text);
+    line-height: 1.5;
+  }
+
+  .ki-campus-page * {
+    box-sizing: border-box;
+  }
+
+  .ki-campus-container {
+    width: min(1140px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+
+  .ki-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    background: rgba(250, 250, 250, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(73, 61, 154, 0.1);
+  }
+
+  .ki-nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 0;
+  }
+
+  .ki-logo {
+    font-size: clamp(1.45rem, 2vw, 1.8rem);
+    font-weight: 800;
+    color: var(--ki-purple);
+    text-decoration: none;
+  }
+
+  .ki-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .ki-nav-links a {
+    text-decoration: none;
+    color: var(--ki-text);
+    font-weight: 600;
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    transition: var(--ki-transition);
+  }
+
+  .ki-nav-links a:hover {
+    background: rgba(73, 61, 154, 0.1);
+    color: var(--ki-purple);
+  }
+
+  .ki-hero {
+    position: relative;
+    min-height: 74vh;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .ki-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(73, 61, 154, 0.92), rgba(73, 61, 154, 0.55) 45%, rgba(73, 61, 154, 0.08));
+    z-index: -1;
+  }
+
+  .ki-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 20%, rgba(255, 230, 109, 0.35), transparent 45%),
+      radial-gradient(circle at 20% 80%, rgba(149, 225, 211, 0.3), transparent 40%);
+    z-index: -1;
+  }
+
+  .ki-hero-content {
+    color: white;
+    text-align: left;
+    padding: 4.5rem 0;
+    width: min(1140px, calc(100% - 2rem));
+  }
+
+  .ki-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    line-height: 1.12;
+    margin: 0 0 1rem;
+    font-weight: 800;
+    max-width: 780px;
+  }
+
+  .ki-hero p {
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    margin: 0;
+    max-width: 760px;
+    opacity: 0.95;
+  }
+
+  .ki-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+
+  .ki-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.8rem 1.35rem;
+    border-radius: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--ki-transition);
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  .ki-btn:hover,
+  .ki-card:hover,
+  .ki-benefit:hover,
+  .ki-testimonial:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  .ki-btn-primary {
+    background: var(--ki-purple);
+    color: #fff;
+  }
+
+  .ki-btn-outline {
+    border-color: #fff;
+    color: #fff;
+    background: transparent;
+  }
+
+  .ki-btn-outline:hover {
+    background: #fff;
+    color: var(--ki-purple);
+  }
+
+  .ki-section {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+  }
+
+  .ki-section h2 {
+    font-size: clamp(1.75rem, 4vw, 2.7rem);
+    font-weight: 800;
+    margin: 0;
+    color: var(--ki-purple);
+  }
+
+  .ki-section-sub {
+    margin: 0.8rem 0 2rem;
+    font-size: 1.1rem;
+    color: #4a4a4a;
+  }
+
+  .ki-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .ki-card,
+  .ki-benefit,
+  .ki-testimonial,
+  .ki-quote,
+  .ki-illustration {
+    background: #fff;
+    border-radius: var(--ki-radius);
+    box-shadow: var(--ki-shadow);
+    transition: var(--ki-transition);
+  }
+
+  .ki-card {
+    padding: 1.2rem;
+    border-top: 5px solid var(--ki-mint);
+  }
+
+  .ki-card:nth-child(2) { border-color: var(--ki-yellow); }
+  .ki-card:nth-child(3) { border-color: var(--ki-coral); }
+
+  .ki-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .ki-card h3,
+  .ki-benefit h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+    color: var(--ki-purple);
+  }
+
+  .ki-split {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+
+  .ki-body-text {
+    background: #fff;
+    border-radius: var(--ki-radius);
+    padding: 1.3rem;
+    box-shadow: var(--ki-shadow);
+  }
+
+  .ki-illustration {
+    min-height: 280px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, rgba(149, 225, 211, 0.35), rgba(255, 153, 153, 0.45));
+    color: var(--ki-purple);
+    font-weight: 700;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .ki-quote {
+    margin-top: 1rem;
+    border-left: 6px solid var(--ki-coral);
+    padding: 1rem 1.2rem;
+    font-style: italic;
+    background: #fff5f5;
+    color: #863131;
+  }
+
+  .ki-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .ki-benefit {
+    padding: 1.2rem;
+  }
+
+  .ki-carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 1fr);
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .ki-carousel::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .ki-carousel::-webkit-scrollbar-thumb {
+    background: rgba(73, 61, 154, 0.35);
+    border-radius: 999px;
+  }
+
+  .ki-testimonial {
+    scroll-snap-align: start;
+    padding: 1rem;
+  }
+
+  .ki-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ki-purple), var(--ki-soft-pink));
+    display: inline-block;
+    margin-bottom: 0.7rem;
+  }
+
+  .ki-testimonial h4 {
+    margin: 0;
+    color: var(--ki-purple);
+  }
+
+  .ki-testimonial small {
+    display: block;
+    margin: 0.2rem 0 0.7rem;
+    color: #666;
+  }
+
+  .ki-form {
+    background: #fff;
+    border-radius: var(--ki-radius);
+    padding: 1.4rem;
+    box-shadow: var(--ki-shadow);
+  }
+
+  .ki-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+
+  .ki-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .ki-form-group.full {
+    grid-column: 1 / -1;
+  }
+
+  .ki-form input,
+  .ki-form select,
+  .ki-form textarea {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 0.8rem 0.85rem;
+    font: inherit;
+    transition: var(--ki-transition);
+    background: #fff;
+  }
+
+  .ki-form input:focus,
+  .ki-form select:focus,
+  .ki-form textarea:focus {
+    border-color: var(--ki-purple);
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(73, 61, 154, 0.15);
+  }
+
+  .ki-form button {
+    width: fit-content;
+    min-width: 200px;
+  }
+
+  .ki-footer {
+    background: var(--ki-purple);
+    color: white;
+    padding-top: 2.5rem;
+  }
+
+  .ki-footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+
+  .ki-footer h4 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .ki-footer a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    opacity: 0.92;
+    transition: var(--ki-transition);
+  }
+
+  .ki-footer a:hover {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+
+  .ki-socials {
+    display: flex;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+  }
+
+  .ki-socials a {
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin-bottom: 0;
+  }
+
+  .ki-footer-bottom {
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 1rem 0;
+    font-size: 0.94rem;
+    opacity: 0.92;
+  }
+
+  .ki-whatsapp {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 100;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 0;
+    display: grid;
+    place-items: center;
+    background: #25d366;
+    color: #fff;
+    font-size: 1.4rem;
+    text-decoration: none;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+    transition: var(--ki-transition);
+  }
+
+  .ki-whatsapp:hover {
+    transform: translateY(-4px) scale(1.04);
+  }
+
+  @media (max-width: 900px) {
+    .ki-card-grid,
+    .ki-benefits-grid,
+    .ki-form-grid,
+    .ki-footer-grid,
+    .ki-split {
+      grid-template-columns: 1fr;
+    }
+
+    .ki-hero-content {
+      text-align: center;
+    }
+
+    .ki-cta-row {
+      justify-content: center;
+    }
+
+    .ki-form button,
+    .ki-btn {
+      width: 100%;
+    }
+
+    .ki-navbar {
+      position: static;
+    }
+  }
+</style>
+
+<div class="ki-campus-page" id="ana-sayfa">
+  <nav class="ki-navbar">
+    <div class="ki-campus-container ki-nav-inner">
+      <a href="#ana-sayfa" class="ki-logo" aria-label=".ki ana sayfa">.ki</a>
+      <div class="ki-nav-links">
+        <a href="#ana-sayfa">Ana Sayfa</a>
+        <a href="#program">Program</a>
+        <a href="#avantajlar">Avantajlar</a>
+        <a href="#basvuru-formu">Başvur</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="ki-hero">
+    <div class="ki-hero-content">
+      <h1>Kampüsünde .ki Elçisi Ol, Farkındalık Yarat!</h1>
+      <p>Regl tabularını yıkmak, sınav stresinde kadınların yanında olmak ve drawpms.com ile duyguları özgürleştirmek için ekibimize katıl.</p>
+      <div class="ki-cta-row">
+        <a class="ki-btn ki-btn-primary" href="#basvuru-formu">Hemen Başvur</a>
+        <a class="ki-btn ki-btn-outline" href="#program">Programı İncele</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="ki-section" id="program">
+    <div class="ki-campus-container">
+      <h2>Nasıl Çalışır?</h2>
+      <p class="ki-section-sub">Her kampüste iki kişilik dinamik ekipler</p>
+      <div class="ki-card-grid">
+        <article class="ki-card">
+          <div class="ki-icon" aria-hidden="true">🩺</div>
+          <h3>Sağlık İletişimcisi</h3>
+          <p>Tıp veya eczacılık öğrencisi olarak PMS ve regl döngüsü hakkında bilimsel bilgi paylaş, empati kur.</p>
+        </article>
+        <article class="ki-card">
+          <div class="ki-icon" aria-hidden="true">📣</div>
+          <h3>Pazarlama Stratejisti</h3>
+          <p>İşletme veya iletişim öğrencisi olarak kampüste etkinlikler düzenle, QR kodlar yerleştir, sosyal medyayı yönet.</p>
+        </article>
+        <article class="ki-card">
+          <div class="ki-icon" aria-hidden="true">📱</div>
+          <h3>drawpms.com'a Yönlendir</h3>
+          <p>Öğrencileri drawpms.com'a yönlendirerek PMS duygularını çizmelerini ve paylaşmalarını sağla.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ki-section" id="sinav-donemi">
+    <div class="ki-campus-container">
+      <h2>Sınav Döneminde PMS ile Uğraşma, Biz Yanındayız</h2>
+      <div class="ki-split" style="margin-top: 1.3rem;">
+        <div>
+          <div class="ki-body-text">
+            <p>Vize ve final haftalarında stres zaten yeterince yüksek. PMS semptomları bu stresi ikiye katlayabiliyor. .ki Campus elçileri olarak kütüphanelerde ve çalışma alanlarında öğrencilere ulaşıyoruz. drawpms.com üzerinde 2 dakikalık bir çizim molası vererek hem rahatlamalarını sağlıyor hem de regl farkındalığı yaratıyoruz.</p>
+          </div>
+          <blockquote class="ki-quote">“Sınav stresini tuvale dök, kendine iyi bak.”</blockquote>
+        </div>
+        <div class="ki-illustration" aria-label="Sınav dönemi illüstrasyon alanı">
+          <span>İllüstrasyon / Görsel Alanı<br>📚💜🎨</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ki-section" id="avantajlar">
+    <div class="ki-campus-container">
+      <h2>Neden .ki Elçisi Olmalısın?</h2>
+      <div class="ki-benefits-grid" style="margin-top: 1.3rem;">
+        <article class="ki-benefit">
+          <h3>Performans Odaklı Kazanç</h3>
+          <p>Yönlendirdiğin her trafik ve oluşturulan her çizim için maddi teşvik kazan.</p>
+        </article>
+        <article class="ki-benefit">
+          <h3>Ücretsiz .ki Ürünleri</h3>
+          <p>Her ay özel hediye paketleri ve yeni ürünleri ilk deneme fırsatı.</p>
+        </article>
+        <article class="ki-benefit">
+          <h3>Kariyer Gelişimi</h3>
+          <p>Pazarlama ve sağlık iletişimi sertifikası, referans mektubu ve staj imkanı.</p>
+        </article>
+        <article class="ki-benefit">
+          <h3>Türkiye Çapında Topluluk</h3>
+          <p>Diğer üniversitelerdeki elçilerle bir araya gel, networking yap.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ki-section" id="bizden-kareler">
+    <div class="ki-campus-container">
+      <h2>Bizden Kareler</h2>
+      <div class="ki-carousel" style="margin-top: 1.2rem;">
+        <article class="ki-testimonial">
+          <span class="ki-avatar" aria-hidden="true"></span>
+          <h4>Ece A.</h4>
+          <small>Boğaziçi Üniversitesi</small>
+          <p>“Etkinliklerde konuşmak özgüvenimi artırdı, birçok kişiye regl farkındalığı konusunda dokunabildim.”</p>
+        </article>
+        <article class="ki-testimonial">
+          <span class="ki-avatar" aria-hidden="true"></span>
+          <h4>Yaren K.</h4>
+          <small>Ege Üniversitesi</small>
+          <p>“drawpms.com’a yönlendirdiğimiz öğrencilerden çok güçlü geri bildirimler aldık. Gerçekten etkili.”</p>
+        </article>
+        <article class="ki-testimonial">
+          <span class="ki-avatar" aria-hidden="true"></span>
+          <h4>Mina T.</h4>
+          <small>Marmara Üniversitesi</small>
+          <p>“Kampüste sağlık iletişimi yaparken hem öğrendim hem de topluluk kurmanın gücünü hissettim.”</p>
+        </article>
+        <article class="ki-testimonial">
+          <span class="ki-avatar" aria-hidden="true"></span>
+          <h4>Selin D.</h4>
+          <small>Hacettepe Üniversitesi</small>
+          <p>“.ki ekibinin sıcak yaklaşımı sayesinde kendimi değerli hissettim, kariyerimde de çok şey kattı.”</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ki-section" id="basvuru-formu">
+    <div class="ki-campus-container">
+      <h2>Hemen Başvur</h2>
+      <p class="ki-section-sub">Formu doldur, .ki Campus ailesine katıl!</p>
+      <form class="ki-form">
+        <div class="ki-form-grid">
+          <label class="ki-form-group">
+            <span>Ad Soyad</span>
+            <input type="text" name="ad-soyad" required>
+          </label>
+          <label class="ki-form-group">
+            <span>E-posta</span>
+            <input type="email" name="eposta" required>
+          </label>
+          <label class="ki-form-group">
+            <span>Telefon</span>
+            <input type="tel" name="telefon" required>
+          </label>
+          <label class="ki-form-group">
+            <span>Üniversite</span>
+            <input type="text" name="universite" required>
+          </label>
+          <label class="ki-form-group">
+            <span>Bölüm</span>
+            <input type="text" name="bolum" required>
+          </label>
+          <label class="ki-form-group">
+            <span>Sınıf</span>
+            <select name="sinif" required>
+              <option value="">Seçiniz</option>
+              <option>1. Sınıf</option>
+              <option>2. Sınıf</option>
+              <option>3. Sınıf</option>
+              <option>4. Sınıf</option>
+              <option>Yüksek Lisans</option>
+            </select>
+          </label>
+          <label class="ki-form-group full">
+            <span>Instagram Kullanıcı Adı (Opsiyonel)</span>
+            <input type="text" name="instagram">
+          </label>
+          <label class="ki-form-group full">
+            <span>Neden .ki elçisi olmak istiyorsun?</span>
+            <textarea name="motivasyon" rows="5" required></textarea>
+          </label>
+        </div>
+        <button type="submit" class="ki-btn ki-btn-primary" style="margin-top: 1rem;">Başvurumu Gönder</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="ki-footer">
+    <div class="ki-campus-container ki-footer-grid">
+      <div>
+        <a href="#ana-sayfa" class="ki-logo" style="color:#fff;">.ki</a>
+        <p style="margin-top: 0.6rem;">kendine iyi bak</p>
+      </div>
+      <div>
+        <h4>Linkler</h4>
+        <a href="#">Mağaza</a><br>
+        <a href="#">Hakkımızda</a><br>
+        <a href="https://drawpms.com" target="_blank" rel="noopener">drawpms.com</a><br>
+        <a href="#">Blog</a>
+      </div>
+      <div>
+        <h4>Sosyal</h4>
+        <div class="ki-socials">
+          <a href="#" aria-label="Instagram">⌁</a>
+          <a href="#" aria-label="TikTok">♪</a>
+          <a href="#" aria-label="X">𝕏</a>
+        </div>
+      </div>
+    </div>
+    <div class="ki-campus-container ki-footer-bottom">© 2026 .ki - Tüm hakları saklıdır. | KVKK | Gizlilik Politikası</div>
+  </footer>
+
+  <a class="ki-whatsapp" href="https://wa.me/905555555555" target="_blank" rel="noopener" aria-label="WhatsApp ile sor">✆</a>
+</div>
