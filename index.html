@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hayıt Otu — Balance Your Cycle · .ki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --purple:#493D9A;
+  --lavender:#F8F7FC;
+  --card:rgba(218,210,255,0.55);
+  --dark:#121212;
+  --white:#fff;
+}
+body{font-family:'Raleway','Segoe UI',system-ui,sans-serif;color:var(--dark);background:#fff;line-height:1.7;font-size:16px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:99;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(73,61,154,.1);padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.4rem;font-weight:700;color:var(--purple);text-decoration:none;letter-spacing:-.02em}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;font-family:inherit;font-size:14px;font-weight:700;padding:11px 26px;border-radius:999px;border:none;cursor:pointer;text-decoration:none;transition:opacity .18s,transform .15s}
+.btn:hover{opacity:.88;transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--purple);border:1.5px solid var(--purple)}
+.btn.ghost:hover{background:var(--purple);color:#fff}
+.btn.white{background:#fff;color:var(--purple)}
+.arr{display:inline-block;transition:transform .2s}
+.btn:hover .arr{transform:translateX(3px)}
+
+/* HERO */
+.hero{min-height:90vh;background:linear-gradient(145deg,#2a1b6b 0%,#493D9A 55%,#7060c8 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative;overflow:hidden}
+.hero::before{content:'🌿';position:absolute;font-size:320px;opacity:.06;top:-60px;right:-60px;line-height:1}
+.hero-inner{position:relative;z-index:1;max-width:700px}
+.tag{display:inline-block;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 16px;border-radius:999px;margin-bottom:20px;border:1px solid rgba(255,255,255,.2)}
+.hero h1{font-size:clamp(2.4rem,7vw,4.2rem);font-weight:400;color:#fff;line-height:1.1;margin-bottom:18px}
+.hero h1 strong{font-weight:700}
+.hero p{font-size:clamp(1rem,2.5vw,1.15rem);color:rgba(255,255,255,.82);margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto}
+
+/* SECTIONS */
+.sec{padding:80px 24px}
+.sec.alt{background:var(--lavender)}
+.wrap{max-width:1080px;margin:0 auto}
+.wrap-sm{max-width:720px;margin:0 auto}
+.sec-tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);margin-bottom:10px}
+h2{font-size:clamp(1.8rem,4vw,2.7rem);font-weight:400;line-height:1.18;margin-bottom:14px}
+h2 strong{font-weight:700}
+
+/* SPLIT */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.img-box{background:var(--card);border-radius:24px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;font-size:100px}
+.body-text{font-size:15px;color:#444;margin-bottom:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.pill{background:var(--card);color:var(--purple);font-size:12px;font-weight:600;padding:5px 14px;border-radius:999px}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+.stat{background:var(--card);border-radius:20px;padding:28px 20px;text-align:center}
+.stat-n{font-size:2.2rem;font-weight:700;color:var(--purple)}
+.stat-l{font-size:12px;color:#666;margin-top:4px;line-height:1.5}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column}
+.step{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid rgba(73,61,154,.12)}
+.step:last-child{border-bottom:none}
+.step-n{width:36px;height:36px;border-radius:50%;background:var(--card);color:var(--purple);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.step h4{font-size:15px;font-weight:700;color:var(--purple);margin-bottom:4px}
+.step p{font-size:14px;color:#555}
+
+/* GRID 2x2 */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:800px;margin:0 auto}
+.bcard{background:var(--purple);color:#fff;border-radius:20px;padding:30px 26px}
+.bcard .ico{font-size:2rem;margin-bottom:12px}
+.bcard h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.bcard p{font-size:13px;opacity:.85;line-height:1.6}
+
+/* QUOTE */
+.quote-wrap{background:var(--card);border-radius:28px;padding:48px 44px;display:flex;gap:36px;align-items:flex-start}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;flex-shrink:0}
+blockquote{font-size:1.05rem;font-style:italic;line-height:1.8;margin-bottom:10px}
+cite{font-size:12px;font-weight:700;color:var(--purple);font-style:normal;letter-spacing:.04em}
+
+/* CTA BOX */
+.cta-box{background:var(--purple);border-radius:28px;padding:60px 40px;text-align:center;max-width:860px;margin:0 auto}
+.cta-box h2{color:#fff;margin-bottom:10px}
+.cta-box p{color:rgba(255,255,255,.78);font-size:15px;margin-bottom:28px}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid rgba(73,61,154,.14)}
+.faq-btn{width:100%;background:none;border:none;font-family:inherit;font-size:15px;font-weight:600;color:var(--dark);text-align:left;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-ico{width:26px;height:26px;border-radius:50%;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:transform .3s}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .32s ease,padding .32s}
+.faq-body.open{max-height:240px;padding-bottom:16px}
+.faq-body p{font-size:14px;color:#555;line-height:1.7}
+
+/* FOOTER */
+footer{background:var(--purple);color:#fff;padding:44px 24px;text-align:center}
+footer .logo{color:#fff;display:block;margin-bottom:8px}
+footer p{opacity:.65;font-size:13px}
+
+@media(max-width:720px){
+  .split{grid-template-columns:1fr;gap:28px}
+  .img-box{aspect-ratio:16/9}
+  .grid2{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .quote-wrap{flex-direction:column;padding:28px 22px;gap:18px}
+  .cta-box{padding:36px 22px}
+  .sec{padding:56px 18px}
+  nav{padding:12px 16px}
+}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">.ki</a>
+  <a href="#cta" class="btn" style="font-size:13px;padding:9px 20px">Balance Your Cycle <span class="arr">→</span></a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag">🌿 Hammadde Serisi</div>
+    <h1>Hayıt Otu:<br><strong>Döngünün Doğal<br>Destekçisi</strong></h1>
+    <p>Binlerce yıldır kadın sağlığında kullanılan bu bitkinin döngüsel dengeye bilimsel katkısını keşfet.</p>
+    <a href="#cta" class="btn white">Balance Your Cycle ile Tanış <span class="arr">→</span></a>
+  </div>
+</div>
+
+<!-- BİLİMSEL AÇIKLAMA -->
+<section class="sec">
+  <div class="wrap">
+    <div class="split">
+      <div class="img-box">🌿</div>
+      <div>
+        <div class="sec-tag">Bilim Ne Diyor?</div>
+        <h2>Nasıl <strong>Çalışır?</strong></h2>
+        <p class="body-text">Hayıt Otu (<em>Vitex Agnus-Castus</em>), hipofiz bezi üzerinde etki göstererek <strong>prolaktin hormonu salgısını düzenler.</strong> Yüksek prolaktin; göğüs hassasiyeti, ruh hali dalgalanmaları ve döngü düzensizliğinin temel tetikleyicisidir.</p>
+        <p class="body-text">Aynı zamanda LH/FSH dengesini destekleyerek <strong>luteal faz yetmezliğini</strong> iyileştirmede klinik olarak incelenmiştir. Etkileri, sentetik hormon içermeksizin vücudun kendi mekanizması üzerinden gerçekleşir.</p>
+        <div class="pills">
+          <span class="pill">🔬 Prolaktin Düzenleyici</span>
+          <span class="pill">⚖️ LH/FSH Dengesi</span>
+          <span class="pill">🌱 Hormonsuz</span>
+          <span class="pill">✅ Vegan &amp; GMP</span>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">2.000+</div><div class="stat-l">Yıllık Kullanım Geçmişi</div></div>
+      <div class="stat"><div class="stat-n">%52</div><div class="stat-l">PMS Semptomlarında<br>Azalma (klinik ort.)</div></div>
+      <div class="stat"><div class="stat-n">3. ay</div><div class="stat-l">Düzenli kullanımda<br>belirgin etki</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEKANİZMA -->
+<section class="sec alt">
+  <div class="wrap">
+    <div class="split" style="gap:48px">
+      <div>
+        <div class="sec-tag">Etki Mekanizması</div>
+        <h2>Adım Adım<br><strong>Nasıl Etki Eder?</strong></h2>
+        <p class="body-text">Hayıt Otu'nun vücuttaki yolculuğu dört aşamada gerçekleşir.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><div><h4>Hipofiz Bezine Ulaşır</h4><p>Aktif bileşenler beyin tabanındaki hipofiz bezine etki ederek prolaktin salgısını modüle eder.</p></div></div>
+        <div class="step"><div class="step-n">2</div><div><h4>Prolaktin Dengeler</h4><p>Yüksek prolaktin düşer; göğüs hassasiyeti, baş ağrısı ve sinirlilik azalmaya başlar.</p></div></div>
+        <div class="step"><div class="step-n">3</div><div><h4>Progesteron Desteği</h4><p>Luteal fazda progesteron üretimi desteklenir; döngü düzeni ve ruh hali iyileşir.</p></div></div>
+        <div class="step"><div class="step-n">4</div><div><h4>Döngü Ritmi Yerleşir</h4><p>Düzenli kullanımda (3+ ay) hormonal ritim istikrar kazanır; PMS semptomları hafifler.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAYDALAR -->
+<section class="sec">
+  <div class="wrap">
+    <div style="text-align:center;max-width:540px;margin:0 auto 44px">
+      <div class="sec-tag">Ne Sağlar?</div>
+      <h2>Hayıt Otu'nun<br><strong>4 Temel Faydası</strong></h2>
+    </div>
+    <div class="grid2">
+      <div class="bcard"><div class="ico">🌊</div><h3>Ruh Hali Dengesi</h3><p>Prolaktin düzenlenerek döngü öncesi sinirlilik, ağlama krizleri ve ani değişimler hafifler.</p></div>
+      <div class="bcard"><div class="ico">💧</div><h3>Şişkinliğe Destek</h3><p>Hormonal dengenin iyileşmesiyle döngü öncesi şişkinlik ve hassasiyet belirgin azalır.</p></div>
+      <div class="bcard"><div class="ico">🔄</div><h3>Döngü Düzenlenmesi</h3><p>Düzensiz veya gecikmiş döngülerde LH/FSH desteğiyle ritim kazanılmasına katkı sağlar.</p></div>
+      <div class="bcard"><div class="ico">🌿</div><h3>Doğal &amp; Hormonsuz</h3><p>Vücudun kendi mekanizması üzerinden etki eder. Sentetik hormon içermez, %100 vegan.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARİN NOTU -->
+<section class="sec alt">
+  <div class="wrap-sm">
+    <div class="quote-wrap">
+      <div class="avatar">A</div>
+      <div>
+        <div class="sec-tag" style="margin-bottom:8px">Eczacı Notu</div>
+        <blockquote>"Eczacı olarak Hayıt Otu'nu özellikle değerli bulduğum şey, sentetik hormon kullanmadan hipofiz düzeyinde etki edebilmesi. PMS'in altında çoğunlukla bir prolaktin dengesizliği yatar — ve Vitex, bu noktaya doğrudan dokunan nadir bitkilerden biri. Balance Your Cycle formülünde bu bitkiyi kullanmamızın nedeni tam da bu: bilimsel temeli güçlü, klinik çalışmaları olan, vücuda saygılı bir destek."</blockquote>
+        <cite>ARİN ALAN — Eczacı, .ki Bitki Bilimi Sorumlusu</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" id="cta">
+  <div class="wrap">
+    <div class="cta-box">
+      <div class="sec-tag" style="color:rgba(255,255,255,.55);margin-bottom:8px">Balance Your Cycle</div>
+      <h2>Hayıt Otu, <strong>Balance Your Cycle'ın</strong> Ana Etken Maddesidir</h2>
+      <p>Magnezyum ve destekleyici bitkilerle formüle edilmiş Balance Your Cycle, döngüsel dengen için bilimsel ve doğal bir destek sunar.</p>
+      <a href="https://www.carewithki.com" class="btn white">Ürünü İncele <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- SSS -->
+<section class="sec alt">
+  <div class="wrap-sm">
+    <div style="text-align:center;margin-bottom:40px">
+      <div class="sec-tag">Sıkça Sorulan Sorular</div>
+      <h2>Merak <strong>Ettiklerin</strong></h2>
+    </div>
+    <div id="faq">
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tog(this)">Hayıt Otu güvenli mi?<span class="faq-ico">+</span></button>
+        <div class="faq-body"><p>Evet. Avrupa'da EMA monografı kapsamında PMS için onaylı bir bitkidir. Klinik çalışmalar 3–6 aylık kullanımda iyi tolere edildiğini gösteriyor. Hamilelik, emzirme ve hormon duyarlı durumlar için hekiminize danışın.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tog(this)">Ne kadar sürede etki eder?<span class="faq-ico">+</span></button>
+        <div class="faq-body"><p>Etkileri kümülatiftir. İlk belirgin iyileşmeler genellikle 2–3. ayda, tam etki 3–6. ayda görülür. Düzenlilik burada anahtar — her gün tutarlı kullanım önemlidir.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tog(this)">İlaçlarla etkileşimi var mı?<span class="faq-ico">+</span></button>
+        <div class="faq-body"><p>Dopaminerjik ilaçlar, hormonal doğum kontrol yöntemleri ve bazı antidepresanlarla etkileşim potansiyeli var. Herhangi bir ilaç kullanıyorsan başlamadan önce eczacın veya doktorunla görüş.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tog(this)">Hormon içeriyor mu?<span class="faq-ico">+</span></button>
+        <div class="faq-body"><p>Hayır. Hayıt Otu hormon değildir. Vücudun kendi hormon üretim mekanizmasını dolaylı yoldan destekler. Sentetik hormon takviyelerinden temel farkı budur. %100 vegan ve GMP sertifikalıdır.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tog(this)">Sürekli mi alınır, döngüye göre mi?<span class="faq-ico">+</span></button>
+        <div class="faq-body"><p>Balance Your Cycle günlük düzenli kullanım için formüle edilmiştir. Döngünün belirli bir fazında değil, her gün tutarlı şekilde alınması hormonal ritmin istikrar kazanmasını destekler.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="logo" href="#">.ki</a>
+  <p>Önce Kendine İyi Bak · carewithki.com</p>
+</footer>
+
+<script>
+function tog(btn){
+  const body=btn.nextElementSibling;
+  const ico=btn.querySelector('.faq-ico');
+  const isOpen=body.classList.contains('open');
+  document.querySelectorAll('.faq-body.open').forEach(el=>{
+    el.classList.remove('open');
+    el.previousElementSibling.querySelector('.faq-ico').textContent='+';
+  });
+  if(!isOpen){body.classList.add('open');ico.textContent='−'}
+}
+</script>
+
+</body>
+</html>
